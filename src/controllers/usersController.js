@@ -4,7 +4,7 @@ const generator = require('generate-password');
 const jwt = require('jsonwebtoken');
 const { request } = require('express');
 
-const { JWT_AUTH_SECRET, SENDMAIL_ADRESSE, SENDMAIL_PASS } = process.env;
+const { JWT_AUTH_SECRET, SENDMAIL_ADRESS, SENDMAIL_PASS } = process.env;
 
 
 
@@ -28,7 +28,7 @@ const sendMailToNewUser = async (name, mail, password) => {
     secureConnection : false,
     port: 587,
     auth: {
-      user: SENDMAIL_ADRESSE,
+      user: SENDMAIL_ADRESS,
       pass: SENDMAIL_PASS,
     },
     tls: {
@@ -37,7 +37,7 @@ const sendMailToNewUser = async (name, mail, password) => {
   });
 
   const mailOptions = {
-    from: SENDMAIL_ADRESSE,
+    from: SENDMAIL_ADRESS,
     to: mail,
     subject: 'Bienvenue sur SDC !',
     text: `Bonjour ${name}. Vous pouvez vous connecter avec votre identifient: ${mail} et votre mot de passe: ${password} . `,
@@ -63,7 +63,7 @@ const sendMailNewPassword = async ( mail, password) => {
     secureConnection : false,
     port: 587,
     auth: {
-      user: SENDMAIL_ADRESSE,
+      user: SENDMAIL_ADRESS,
       pass: SENDMAIL_PASS,
     },
     tls: {
@@ -72,7 +72,7 @@ const sendMailNewPassword = async ( mail, password) => {
   });
 
   const mailOptions = {
-    from: SENDMAIL_ADRESSE,
+    from: SENDMAIL_ADRESS,
     to: mail,
     subject: 'Nouveau mot de passe SDC!',
     text: `Bonjour. Vous pouvez vous connecter avec votre identifient: ${mail} et votre nouveau mot de passe: ${password} . `,
