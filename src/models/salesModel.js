@@ -142,6 +142,24 @@ const updateRemise = (id, newRemise) => {
   });
 };
 
+const updateQuantitySale = (id, newQuantity) => {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      `UPDATE vente SET nb_produit = ? WHERE id = ?`,
+      [newQuantity, id],
+      (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      }
+    );
+  });
+};
+
+
+
 const updateSolde = (id, newSolde) => {
   return new Promise((resolve, reject) => {
     connection.query(
@@ -252,4 +270,5 @@ module.exports = {
   getSalesByIdEvent,
   invalideSale,
   inValidationSaleById,
+  updateQuantitySale,
 };

@@ -5,7 +5,6 @@ const getAllProducts = async (req, res) => {
     const results = await productsModel.getAllProducts();
     const findResult = results.filter((el) => !el.archive);
     res.status(200).json(findResult);
-    console.log(results);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -17,10 +16,8 @@ const searchProducts = async (req, response) => {
     const results = await productsModel.search(query);
     const findResult = results.filter((el) => !el.archive);
     response.status(200).json(findResult);
-    console.log(results);
   } catch (err) {
     response.status(500).json(err);
-    console.log(err);
   }
 };
 
@@ -45,7 +42,6 @@ const searchProductsEvent = async (req, response) => {
       (el) => el.quantité_evenement > 0 && !el.archive
     );
     response.status(200).json(findResult);
-    console.log(results);
   } catch {
     response.status(500).json(err);
   }
@@ -70,7 +66,6 @@ const creatProduct = async (request, response) => {
       result,
     });
   } catch (error) {
-    console.log(error);
     response.status(500).json(error);
   }
 };
@@ -110,7 +105,6 @@ const updateProductEvent = async (request, response) => {
       message: 'Product updated',
       result,
     });
-    console.log(result);
   } catch (error) {
     response.status(500).json(error);
   }
