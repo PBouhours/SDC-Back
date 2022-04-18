@@ -101,7 +101,7 @@ const logUser = async (request, response) => {
           { id: result.id, admin: result.admin },
           JWT_AUTH_SECRET,
           {
-            expiresIn: '1h',
+            expiresIn: '12h',
           }
         );
         response.status(200).json({
