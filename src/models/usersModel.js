@@ -172,10 +172,10 @@ const actifUser = (mail) => {
       (err, result) => {
         if (err) {
           reject(err);
-        } else if (result[0].actif == 1 && result[0].archive == 0) {
-          resolve(true);
-        } else {
+        } else if (result.length === 0) {
           resolve(false);
+        } else {
+          resolve(true);
         }
       }
     );
