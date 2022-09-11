@@ -459,6 +459,19 @@ const getSalesByEmail = async (request, response) => {
   }
 };
 
+const annulationSale = async (request, response) => {
+  const id = request.params.id;
+  try {
+    const result = await salesModel.inValidationSaleById(id);
+    response.status(200).json({
+      message: 'sale annulation',
+      result,
+    });
+  } catch (error) {
+    response.status(500).json(error);
+  }
+};
+
 module.exports = {
   creatSale,
   addProductInSale,
@@ -470,4 +483,5 @@ module.exports = {
   getSalesByEmail,
   getSaleById,
   inValidateSale,
+  annulationSale,
 };

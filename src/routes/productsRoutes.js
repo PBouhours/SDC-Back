@@ -24,6 +24,7 @@ const {
   getSalesByEmail,
   getSaleById,
   inValidateSale,
+  annulationSale,
 } = require('../controllers/salesController');
 
 router.get('/', getAllProducts);
@@ -42,6 +43,7 @@ router.post('/update-quantity-inStore', updateQuantity);
 router.post('/deleteProduct-inStore', deleteProductInStore);
 router.post('/validation-store', validateSale);
 router.post('/invalidation-sale/:id', inValidateSale);
+router.post('/annulation-sale/:id', annulationSale);
 router.post('/sales-User', getSalesByEmail);
 router.get('/sales-User/:id', getSaleById);
 
